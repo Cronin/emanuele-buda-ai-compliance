@@ -1,0 +1,21 @@
+# robots.txt for emanuelebuda.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://emanuelebuda.com/sitemap.xml
+
+# Disallow admin or private areas (if any in future)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

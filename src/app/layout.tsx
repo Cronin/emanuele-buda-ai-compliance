@@ -1,37 +1,59 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: 'AI Act Compliance in 30 Days | Emanuele Buda',
-  description: 'Turn your high-risk AI systems from liability to documented assets. Expert AI Act compliance automation. August 2026 deadline. €35M fines. Only 9 months left.',
-  keywords: [
-    'AI Act compliance',
-    'EU AI Act',
-    'high-risk AI systems',
-    'AI regulation',
-    'compliance automation',
-    'AI documentation',
-    'risk management',
-    'Emanuele Buda',
-    'GRC',
-    'Tesla',
-    'AI Act consultant'
-  ],
-  authors: [{ name: 'Emanuele Buda' }],
+  metadataBase: new URL(`https://${siteConfig.domain}`),
+  title: {
+    default: siteConfig.seo.defaultTitle,
+    template: `%s | ${siteConfig.name}`
+  },
+  description: siteConfig.seo.defaultDescription,
+  keywords: siteConfig.seo.keywords,
+  authors: [{ name: siteConfig.author.name }],
+  creator: siteConfig.author.name,
+  publisher: siteConfig.author.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: 'AI Act Compliance in 30 Days',
-    description: 'Turn your high-risk AI systems from liability to documented assets. Expert compliance automation.',
     type: 'website',
     locale: 'en_US',
+    url: `https://${siteConfig.domain}`,
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.seo.defaultDescription,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Act Compliance in 30 Days',
-    description: 'Turn your high-risk AI systems from liability to documented assets.',
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.seo.defaultDescription,
+    images: [`https://${siteConfig.domain}/og-image.jpg`],
+    creator: siteConfig.social.twitter,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add Google Search Console verification
   },
 };
 

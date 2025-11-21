@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { blogPosts } from '@/data/blog-posts';
 import Footer from '@/components/Footer';
+import BlogPostSchema from '@/components/BlogPostSchema';
 
 export default function BlogPostPage() {
   const params = useParams();
@@ -25,7 +26,9 @@ export default function BlogPostPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <BlogPostSchema post={post} />
+      <main className="min-h-screen bg-white">
       {/* Header */}
       <header className="border-b-2 border-black py-6">
         <div className="container-custom flex justify-between items-center">
@@ -204,5 +207,6 @@ export default function BlogPostPage() {
 
       <Footer />
     </main>
+    </>
   );
 }
