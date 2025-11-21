@@ -7,6 +7,7 @@ import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import ConversionTrackingProvider from '@/components/ConversionTrackingProvider';
 import { siteConfig } from '@/config/site';
 import type { Metadata } from 'next';
 
@@ -152,17 +153,19 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
-      <main className="min-h-screen bg-white">
-        <Hero />
-        <UrgencyBadge />
-        <ProblemSection />
-        <SolutionSection />
-        <CVSection />
-        <Pricing />
-        <FAQ />
-        <CTASection />
-        <Footer />
-      </main>
+      <ConversionTrackingProvider>
+        <main className="min-h-screen bg-white">
+          <Hero />
+          <UrgencyBadge />
+          <ProblemSection />
+          <SolutionSection />
+          <CVSection />
+          <Pricing />
+          <FAQ />
+          <CTASection />
+          <Footer />
+        </main>
+      </ConversionTrackingProvider>
     </>
   );
 }

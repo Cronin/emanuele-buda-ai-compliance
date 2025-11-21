@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useViewportTracking } from '@/lib/hooks/useConversionTracking';
 
 interface Experience {
   company: string;
@@ -65,8 +66,14 @@ const certifications = [
 ];
 
 export default function CVSection() {
+  const cvSectionRef = useViewportTracking('cv_view', {
+    enabled: true,
+    threshold: 0.3,
+    trackOnce: true,
+  });
+
   return (
-    <section className="py-32 bg-black text-white relative overflow-hidden">
+    <section className="py-32 bg-black text-white relative overflow-hidden" ref={cvSectionRef as any}>
       {/* Subtle grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
 

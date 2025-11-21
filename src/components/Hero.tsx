@@ -2,8 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { LampContainer } from './ui/lamp';
+import { trackCTAClickAssessment, trackCTAClickConsultation } from '@/lib/analytics';
 
 export default function Hero() {
+  const handleAssessmentClick = () => {
+    trackCTAClickAssessment({ location: 'hero' });
+  };
+
+  const handleConsultationClick = () => {
+    trackCTAClickConsultation({ location: 'hero' });
+  };
   return (
     <LampContainer className="bg-black">
       <motion.div
@@ -45,12 +53,14 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 mt-6">
           <a
             href="#assessment"
+            onClick={handleAssessmentClick}
             className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-slate-200 transition-all duration-300 hover:scale-105 text-center"
           >
             Get Free AI Risk Assessment
           </a>
           <a
             href="#consultation"
+            onClick={handleConsultationClick}
             className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-black transition-all duration-300 text-center"
           >
             Schedule 15-Min Consultation

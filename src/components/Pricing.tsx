@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useViewportTracking } from '@/lib/hooks/useConversionTracking';
 
 const pricingTiers = [
   {
@@ -57,8 +58,14 @@ const pricingTiers = [
 ];
 
 export default function Pricing() {
+  const pricingSectionRef = useViewportTracking('pricing_view', {
+    enabled: true,
+    threshold: 0.3,
+    trackOnce: true,
+  });
+
   return (
-    <section id="pricing" className="section bg-white">
+    <section id="pricing" className="section bg-white" ref={pricingSectionRef as any}>
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

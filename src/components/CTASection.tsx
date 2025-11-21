@@ -1,8 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { trackCTAClickAssessment, trackCTAClickConsultation, trackEmailClick } from '@/lib/analytics';
 
 export default function CTASection() {
+  const handleAssessmentClick = () => {
+    trackCTAClickAssessment({ location: 'cta_section' });
+    trackEmailClick();
+  };
+
+  const handleConsultationClick = () => {
+    trackCTAClickConsultation({ location: 'cta_section' });
+    trackEmailClick();
+  };
   return (
     <section id="consultation" className="section bg-black text-white">
       <div className="container-custom text-center">
@@ -55,6 +65,7 @@ export default function CTASection() {
               </ul>
               <a
                 href="mailto:emanuele@aiactcompliance.eu?subject=Free AI Risk Assessment"
+                onClick={handleAssessmentClick}
                 className="block py-4 px-6 bg-black text-white border-2 border-black hover:bg-gray-800 transition-all font-bold text-center"
               >
                 Schedule Free Assessment →
@@ -95,6 +106,7 @@ export default function CTASection() {
               </ul>
               <a
                 href="mailto:emanuele@aiactcompliance.eu?subject=15-Min Consultation Request"
+                onClick={handleConsultationClick}
                 className="block py-4 px-6 bg-white text-black border-2 border-white hover:bg-gray-100 transition-all font-bold text-center"
               >
                 Book 15-Min Call →
